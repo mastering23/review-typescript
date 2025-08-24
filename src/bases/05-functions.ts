@@ -47,6 +47,8 @@ const user2 = getUser2();
 print(user);
 print(user2);
 
+//--------------------//
+
 const myNumbers: number[] = [1,2,3,4,5];
 
 myNumbers.forEach(function(value){
