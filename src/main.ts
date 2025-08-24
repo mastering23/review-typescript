@@ -1,5 +1,5 @@
 import './style.css'
-import './bases/05-functions';
+import './bases/06-desestructuracion-object';
 
 
 
