@@ -1,19 +1,24 @@
+import type { GiphyResponseTs } from "../data/giphy.response";
 import { print } from "./08-imp-exp";
 
 const API_KEY = 'HWuTUrcEL2FtFGqNQRtN0V5TfqAnNUsI';
 
 const MyRequest  = fetch(`https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`);
 
-MyRequest.then((response)=>{
-  // print(response);
-  response.json().then((data)=>{
-    const imageUrl = data.data.images.original.url;
-    print(imageUrl);
+const createImageInsideDom = (url:string) =>{
     const imgElement = document.createElement('img');
-    imgElement.src = imageUrl; 
+    imgElement.src = url; 
     document.body.append(imgElement);
+}
+
+MyRequest.then((response)=>{
+  response.json().then(({data}: GiphyResponseTs)=>{
+  const imageUrl = data.images.original.url;
+  createImageInsideDom(imageUrl);
   });
-})
-.catch((err)=>{
+
+}).catch((err)=>{
+  
   print(err);
-})
+
+});
